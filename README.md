@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Union
 
-## Getting Started
+Your research paper AI assistant that focuses on democratizing doctorate-level research to everyone.
 
-First, run the development server:
+# Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- User accounts / authentication
+- Upload a PDF
+- Generate a brief AI-powered summary.
+- The summary will link to different sections of the paper.
+- AI-based highlighting of the paper
+- Conversational AI (chatbot)
+
+## Deferred Features
+
+These are futures we plan to implement in the future
+
+- Visualize references/citations as an interactive graph
+- Add user-friendly research paper search
+
+# Tech Stack
+
+- React 19
+- NextJS 15
+- TailwindCSS
+- Shadcn/UI
+- TRPC
+- Tanstack Query
+- Better Auth
+- Postgres (Neon)
+- Drizzle
+
+# Local development
+
+1. Make sure you have NodeJS installed. You can install it using this link: https://nodejs.org/en/download/
+2. Create a .env file in the root directory: `touch .env`
+
+3. Fill the .env file with these contents
+
+```
+DATABASE_URL=
+BETTER_AUTH_URL=http://localhost:3000
+BETTER_AUTH_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Set up google credentials for the auth provider by following the Google Cloud instructions here: https://www.better-auth.com/docs/authentication/google
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+5. Generate a database URL by creating a project on [Neon](https://neon.tech) and clicking connect and copying the connection string
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+6. Install dependencies by doing `npm install`
 
-## Learn More
+7. Run the development server by doing `npm run dev`
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+8. (Optional) Open the drizzle studio to see the database: `npm run db:studio`
