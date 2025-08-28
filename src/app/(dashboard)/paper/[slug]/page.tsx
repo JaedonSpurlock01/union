@@ -104,7 +104,7 @@ export default function PaperPage() {
         <div className="col-span-3 xl:border-r xl:border-border">
           <Thread />
         </div>
-        <div className="col-span-3 hidden xl:block relative">
+        <div className="col-span-3 hidden xl:block relative m-4">
           <PdfLoader
             url="/papers/attention.pdf"
             beforeLoad={<Loader2 className="animate-spin" />}

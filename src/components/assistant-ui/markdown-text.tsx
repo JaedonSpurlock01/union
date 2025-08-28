@@ -197,7 +197,7 @@ const defaultComponents = memoizeMarkdownComponents({
   pre: ({ className, ...props }) => (
     <pre
       className={cn(
-        "overflow-x-auto !rounded-t-none rounded-b-lg bg-black p-4 text-white",
+        "overflow-x-auto !rounded-t-none rounded-b-lg bg-black !text-sm p-4 text-white",
         className
       )}
       {...props}
