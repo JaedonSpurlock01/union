@@ -7,10 +7,10 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="bg-muted min-h-svh [--header-height:calc(--spacing(14))]">
+    <div className="bg-muted max-h-svh [--header-height:calc(--spacing(14))]">
       <PageHeader />
       <PageSidebar />
-      <div className="flex flex-1 pl-[3.5rem]">{children}</div>
+      <div className="flex flex-1 pl-[3.5rem] mt-[3.5rem]">{children}</div>
     </div>
   );
 }

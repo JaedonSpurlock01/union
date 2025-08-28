@@ -12,7 +12,7 @@ export default function PageSidebar() {
   return (
     <aside
       className={cn(
-        "fixed left-0 top-[3.5rem] h-[calc(100svh-3.5rem)] bg-background border-r border-border text-sidebar-foreground transition-all ease-in-out duration-300",
+        "fixed left-0 z-[20] top-[3.5rem] h-[calc(100svh-3.5rem)] bg-background border-r border-border text-sidebar-foreground transition-all ease-in-out duration-300",
         isHovered ? "w-[286px]" : "w-14 flex flex-col items-center"
       )}
       onMouseEnter={() => setIsHovered(true)}

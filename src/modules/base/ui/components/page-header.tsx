@@ -7,7 +7,7 @@ import NavButton from "./nav-button";
 
 export default function PageHeader() {
   return (
-    <header className="flex flex-col sticky top-0 bg-background backdrop-blur-md z-30">
+    <header className="flex flex-col fixed top-0 bg-background backdrop-blur-md z-30">
       <nav className="md:grid grid-cols-12 border-b top-0 flex items-center justify-between h-full">
         <Link
           href="/"

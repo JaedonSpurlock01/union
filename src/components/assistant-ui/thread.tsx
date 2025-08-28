@@ -37,6 +37,8 @@ export const Thread: FC = () => {
       }}
     >
       <ThreadPrimitive.Viewport className="relative flex min-w-0 flex-1 flex-col gap-6 overflow-y-scroll">
+        <ThreadWelcome />
+
         <ThreadPrimitive.Messages
           components={{
             UserMessage,
@@ -141,7 +143,7 @@ const ThreadWelcomeSuggestions: FC = () => {
           >
             <Button
               variant="ghost"
-              className="dark:hover:bg-accent/60 h-auto w-full flex-1 flex-wrap items-start justify-start gap-1 rounded-xl border px-4 py-3.5 text-left text-sm sm:flex-col"
+              className="dark:hover:bg-accent/60 h-auto w-full flex-1 flex-wrap items-start justify-start gap-1 border px-4 py-3.5 text-left text-sm sm:flex-col"
               aria-label={suggestedAction.action}
             >
               <span className="font-medium">{suggestedAction.title}</span>
@@ -161,10 +163,10 @@ const Composer: FC = () => {
       <ThreadPrimitive.Empty>
         <ThreadWelcomeSuggestions />
       </ThreadPrimitive.Empty>
-      <ComposerPrimitive.Root className="relative flex w-full flex-col rounded-2xl focus-within:ring-2 focus-within:ring-black focus-within:ring-offset-2 dark:focus-within:ring-white">
+      <ComposerPrimitive.Root className="relative flex w-full flex-col focus-within:ring-2 focus-within:ring-black focus-within:ring-offset-2 dark:focus-within:ring-white">
         <ComposerPrimitive.Input
           placeholder="Send a message..."
-          className="bg-muted border-border dark:border-muted-foreground/15 focus:outline-primary placeholder:text-muted-foreground max-h-[calc(50dvh)] min-h-16 w-full resize-none rounded-t-2xl border-x border-t px-4 pb-3 pt-2 text-base outline-none"
+          className="bg-muted border-border dark:border-muted-foreground/15 focus:outline-primary placeholder:text-muted-foreground max-h-[calc(50dvh)] min-h-16 w-full resize-none border-x border-t px-4 pb-3 pt-2 text-base outline-none"
           rows={1}
           autoFocus
           aria-label="Message input"
@@ -177,7 +179,7 @@ const Composer: FC = () => {
 
 const ComposerAction: FC = () => {
   return (
-    <div className="bg-muted border-border dark:border-muted-foreground/15 relative flex items-center justify-between rounded-b-2xl border-x border-b p-2">
+    <div className="bg-muted border-border dark:border-muted-foreground/15 relative flex items-center justify-between border-x border-b p-2">
       <TooltipIconButton
         tooltip="Attach file"
         variant="ghost"
@@ -221,7 +223,7 @@ const ComposerAction: FC = () => {
 const MessageError: FC = () => {
   return (
     <MessagePrimitive.Error>
-      <ErrorPrimitive.Root className="border-destructive bg-destructive/10 dark:bg-destructive/5 text-destructive mt-2 rounded-md border p-3 text-sm dark:text-red-200">
+      <ErrorPrimitive.Root className="border-destructive bg-destructive/10 dark:bg-destructive/5 text-destructive mt-2 border p-3 text-sm dark:text-red-200">
         <ErrorPrimitive.Message className="line-clamp-2" />
       </ErrorPrimitive.Root>
     </MessagePrimitive.Error>
@@ -297,7 +299,7 @@ const UserMessage: FC = () => {
       >
         <UserActionBar />
 
-        <div className="bg-muted text-foreground col-start-2 break-words rounded-3xl px-5 py-2.5">
+        <div className="bg-muted text-foreground col-start-2 break-words px-5 py-2.5">
           <MessagePrimitive.Content components={{ Text: MarkdownText }} />
         </div>
 
@@ -326,7 +328,7 @@ const UserActionBar: FC = () => {
 const EditComposer: FC = () => {
   return (
     <div className="mx-auto flex w-full max-w-[var(--thread-max-width)] flex-col gap-4 px-[var(--thread-padding-x)]">
-      <ComposerPrimitive.Root className="bg-muted max-w-7/8 ml-auto flex w-full flex-col rounded-xl">
+      <ComposerPrimitive.Root className="bg-muted max-w-7/8 ml-auto flex w-full flex-col">
         <ComposerPrimitive.Input
           className="text-foreground flex min-h-[60px] w-full resize-none bg-transparent p-4 outline-none"
           autoFocus
