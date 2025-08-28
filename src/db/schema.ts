@@ -1,4 +1,12 @@
-import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  text,
+  timestamp,
+  boolean,
+  integer,
+  jsonb,
+  vector,
+} from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -52,6 +60,52 @@ export const verification = pgTable("verification", {
   identifier: text("identifier").notNull(),
   value: text("value").notNull(),
   expiresAt: timestamp("expires_at").notNull(),
+  createdAt: timestamp("created_at").$defaultFn(
+    () => /* @__PURE__ */ new Date()
+  ),
+  updatedAt: timestamp("updated_at").$defaultFn(
+    () => /* @__PURE__ */ new Date()
+  ),
+});
+
+export const papers = pgTable("papers", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description"),
+  filename: text("filename").notNull(),
+  uploadedBy: text("uploaded_by")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  createdAt: timestamp("created_at").$defaultFn(
+    () => /* @__PURE__ */ new Date()
+  ),
+  updatedAt: timestamp("updated_at").$defaultFn(
+    () => /* @__PURE__ */ new Date()
+  ),
+});
+
+export const chunks = pgTable("chunks", {
+  id: text("id").primaryKey(),
+  paperId: text("paper_id")
+    .references(() => papers.id, { onDelete: "cascade" })
+    .notNull(),
+  pageNumber: integer("page_number"),
+  content: text("content").notNull(),
+  bbox: jsonb("bbox"),
+  createdAt: timestamp("created_at").$defaultFn(
+    () => /* @__PURE__ */ new Date()
+  ),
+  updatedAt: timestamp("updated_at").$defaultFn(
+    () => /* @__PURE__ */ new Date()
+  ),
+});
+
+export const embeddings = pgTable("embeddings", {
+  id: text("id").primaryKey(),
+  chunkId: text("chunk_id")
+    .references(() => chunks.id, { onDelete: "cascade" })
+    .notNull(),
+  embedding: vector("embedding", { dimensions: 1536 }), // OpenAI text-embedding-3-small
   createdAt: timestamp("created_at").$defaultFn(
     () => /* @__PURE__ */ new Date()
   ),
